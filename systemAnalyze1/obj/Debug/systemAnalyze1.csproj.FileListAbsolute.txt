@@ -1,0 +1,9 @@
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\bin\Debug\systemAnalyze1.exe.config
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\bin\Debug\systemAnalyze1.exe
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\bin\Debug\systemAnalyze1.pdb
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\obj\Debug\systemAnalyze1.csprojAssemblyReference.cache
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\obj\Debug\systemAnalyze1.Form1.resources
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\obj\Debug\systemAnalyze1.Properties.Resources.resources
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\obj\Debug\systemAnalyze1.csproj.GenerateResource.cache
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\obj\Debug\systemAnalyze1.exe
+C:\Users\iljav\source\repos\systemAnalyze1\systemAnalyze1\obj\Debug\systemAnalyze1.pdb
