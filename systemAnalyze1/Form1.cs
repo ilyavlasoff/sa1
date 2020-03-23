@@ -17,18 +17,19 @@ namespace systemAnalyze1
             InitializeComponent();
         }
 
+        public int count = 0;
+
         private void newValuesButton_Click_1(object sender, EventArgs e)
         {
-            int tops = Convert.ToInt32(topsQuanUpDown.Value);
-            int edges = Convert.ToInt32(edgesQuanUpDown.Value);
-            if (tops <= 0 || edges <= 0)
+            count = Convert.ToInt32(topsQuanUpDown.Value);
+            if (count <= 0 )
             {
                 MessageBox.Show("Неверные значения количества вершин или ребер", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            relationsMatrixView.RowCount = tops;
-            relationsMatrixView.ColumnCount = tops;
-            for(int i=0; i!= tops; ++i)
+            relationsMatrixView.RowCount = count;
+            relationsMatrixView.ColumnCount = count;
+            for(int i=0; i!= count; ++i)
             {
                 relationsMatrixView.Rows[i].HeaderCell.Value = $"{i}";
                 relationsMatrixView.Columns[i].HeaderCell.Value = $"{i}";
@@ -37,25 +38,39 @@ namespace systemAnalyze1
 
         private void startCalcButton_Click(object sender, EventArgs e)
         {
-            List<List<Int32>> matrixData = new List<List<int>>();
-            foreach(DataGridViewRow row in relationsMatrixView.Rows)
+            List<List<int>> inputValues = new List<List<int>>();
+            for (int i = 0; i != count; ++i)
             {
-                List<Int32> mRow = new List<int>();
-                foreach(DataGridViewCell cell in row.Cells)
+                DataGridViewRow curRow = relationsMatrixView.Rows[i];
+                List<int> curList = new List<int>();
+                for (int j = 0; j != count; ++j)
                 {
-                    Int32 value;
-                    if (!Int32.TryParse(cell.Value.ToString(),out value))
+                    try
                     {
-                        MessageBox.Show("Заполните матрицу числовыми значениями", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        int val = 0;
+                        if (!Int32.TryParse(curRow.Cells[j].Value.ToString(), out val))
+                        {
+                            MessageBox.Show("неверные значения");
+                            return;
+                        }
+                        if (val == 1)
+                            curList.Add(j);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}");
                         return;
                     }
-                    mRow.Add(value);
                 }
+
+                inputValues.Add(curList);
             }
             graphExplorer ge;
             try
             {
-                ge = new graphExplorer(matrixData);
+                ge = new graphExplorer(inputValues);
+                showRenamedMatrix(ge);
+                showG(ge);
             }
             catch (Exception ex)
             {
@@ -63,6 +78,50 @@ namespace systemAnalyze1
                 return;
             }
 
+        }
+
+        private void showG(graphExplorer ge)
+        {
+            List<List<int>> g = ge.getSetOfOutcomingPaths();
+            string s = "";
+            for(int i=0; i!= g.Count; ++i)
+            {
+                s += i.ToString() + ": {";
+                foreach (int val in g[i])
+                    s += val.ToString() + " ";
+                s += "} \n";
+            }
+            setsBox.Text = s;
+        }
+
+        private void showRenamedMatrix(graphExplorer oper)
+        {
+            List<List<KeyValuePair<int, int>>> matrix = oper.AtoBMatrix();
+            int bounds = oper.bounds;
+            incidentMatrixView.Rows.Clear();
+            incidentMatrixView.Columns.Clear();
+            for (int i = 0; i != bounds; i++)
+                incidentMatrixView.Columns.Add(new DataGridViewTextBoxColumn());
+            for (int i = 0; i != matrix.Count; ++i)
+            {
+                DataGridViewRow curRow = new DataGridViewRow();
+                for (int j = 0; j != bounds; ++j)
+                {
+                    DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                    if (matrix[i].Contains(new KeyValuePair<int, int>(j, 1)))
+                        cell.Value = 1;
+                    else if (matrix[i].Contains(new KeyValuePair<int, int>(j, -1)))
+                        cell.Value = -1;
+                    else cell.Value = 0;
+                    curRow.Cells.Add(cell);
+                }
+                incidentMatrixView.Rows.Add(curRow);
+                incidentMatrixView.Rows[i].HeaderCell.Value = i.ToString();
+            }
+            for (int j = 0; j != bounds; ++j)
+            {
+                incidentMatrixView.Columns[j].HeaderCell.Value = j.ToString();
+            }
         }
     }
 }

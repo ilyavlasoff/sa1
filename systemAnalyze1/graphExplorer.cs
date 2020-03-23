@@ -12,54 +12,36 @@ namespace systemAnalyze1
         private Int32 topsQuan;
         public graphExplorer(List<List<Int32>> _init)
         {
-            if (!verifyRelationMatrix(_init)) throw new Exception("Wrong matrix");
             matrix = _init;
             topsQuan = _init.Count;
         }
 
-        private Boolean verifyRelationMatrix(List<List<Int32>> _m)
-        {
-            foreach (List<Int32> _line in _m)
-            {
-                if (_line.Count != _m.Count) return false;
-                if (!_line.All(value => value == 1 || value == 0)) return false;
-            }
-            return true;
-        }
+        public int bounds = 0;
 
-        public List<List<KeyValuePair<int, int>>> getIncidentsMatrix()
+        public List<List<KeyValuePair<int, int>>> AtoBMatrix()
         {
-            List<List<KeyValuePair<int, int>>> resp = new List<List<KeyValuePair<int, int>>>();
-            for(Int32 i =0; i!= topsQuan; ++i)
+            List<List<KeyValuePair<int, int>>> Bmatrix = new List<List<KeyValuePair<int, int>>>();
+            for (int i = 0; i != matrix.Count; ++i)
             {
-                for(Int32 j=0; j!= topsQuan; ++j)
+                Bmatrix.Add(new List<KeyValuePair<int, int>>());
+            }
+            int num = 0;
+            for (int i = 0; i != matrix.Count; ++i)
+            {
+                for (int j = 0; j != matrix[i].Count; ++j)
                 {
-                    if (matrix[i][j] == 1)
-                    {
-                        List<KeyValuePair<int, int>> line = new List<KeyValuePair<int, int>>(topsQuan);
-                        line.Add(new KeyValuePair<int, int>(i, -1));
-                        line.Add(new KeyValuePair<int, int>(j, 1));
-                        resp.Add(line);
-                    }
+                    Bmatrix[i].Add(new KeyValuePair<int, int>(num, 1));
+                    Bmatrix[matrix[i][j]].Add(new KeyValuePair<int, int>(num, -1));
+                    ++num;
                 }
             }
-            return resp;
+            bounds = num;
+            return Bmatrix;
         }
 
         public List<List<Int32>> getSetOfOutcomingPaths()
         {
-            List<List<Int32>> resp = new List<List<int>>();
-            foreach(List<Int32> line in matrix)
-            {
-                List<Int32> respLine = new List<int>();
-                for(Int32 i=0; i!= topsQuan; ++i)
-                {
-                    if (line[i] == 1)
-                        respLine.Add(i);
-                }
-                resp.Add(respLine);
-            }
-            return resp;
+            return matrix;
         }
     }
 }

@@ -35,14 +35,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.newValuesButton = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.edgesQuanUpDown = new System.Windows.Forms.NumericUpDown();
             this.topsQuanUpDown = new System.Windows.Forms.NumericUpDown();
             this.startCalcButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.relationsMatrixView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentMatrixView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edgesQuanUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topsQuanUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,21 +48,21 @@
             this.relationsMatrixView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.relationsMatrixView.Location = new System.Drawing.Point(12, 28);
             this.relationsMatrixView.Name = "relationsMatrixView";
-            this.relationsMatrixView.Size = new System.Drawing.Size(334, 214);
+            this.relationsMatrixView.Size = new System.Drawing.Size(643, 285);
             this.relationsMatrixView.TabIndex = 0;
             // 
             // incidentMatrixView
             // 
             this.incidentMatrixView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.incidentMatrixView.Location = new System.Drawing.Point(391, 280);
+            this.incidentMatrixView.Location = new System.Drawing.Point(365, 353);
             this.incidentMatrixView.Name = "incidentMatrixView";
             this.incidentMatrixView.ReadOnly = true;
-            this.incidentMatrixView.Size = new System.Drawing.Size(334, 214);
+            this.incidentMatrixView.Size = new System.Drawing.Size(654, 299);
             this.incidentMatrixView.TabIndex = 1;
             // 
             // setsBox
             // 
-            this.setsBox.Location = new System.Drawing.Point(12, 280);
+            this.setsBox.Location = new System.Drawing.Point(15, 438);
             this.setsBox.Name = "setsBox";
             this.setsBox.ReadOnly = true;
             this.setsBox.Size = new System.Drawing.Size(334, 214);
@@ -84,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(388, 261);
+            this.label2.Location = new System.Drawing.Point(362, 337);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 13);
             this.label2.TabIndex = 7;
@@ -93,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 264);
+            this.label3.Location = new System.Drawing.Point(15, 422);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 8;
@@ -101,7 +98,7 @@
             // 
             // newValuesButton
             // 
-            this.newValuesButton.Location = new System.Drawing.Point(618, 184);
+            this.newValuesButton.Location = new System.Drawing.Point(916, 28);
             this.newValuesButton.Name = "newValuesButton";
             this.newValuesButton.Size = new System.Drawing.Size(103, 23);
             this.newValuesButton.TabIndex = 17;
@@ -109,44 +106,18 @@
             this.newValuesButton.UseVisualStyleBackColor = true;
             this.newValuesButton.Click += new System.EventHandler(this.newValuesButton_Click_1);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(370, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Количество ребер M";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(363, 186);
+            this.label4.Location = new System.Drawing.Point(661, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Количество вершин N";
             // 
-            // edgesQuanUpDown
-            // 
-            this.edgesQuanUpDown.Location = new System.Drawing.Point(487, 225);
-            this.edgesQuanUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.edgesQuanUpDown.Name = "edgesQuanUpDown";
-            this.edgesQuanUpDown.Size = new System.Drawing.Size(120, 20);
-            this.edgesQuanUpDown.TabIndex = 14;
-            this.edgesQuanUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // topsQuanUpDown
             // 
-            this.topsQuanUpDown.Location = new System.Drawing.Point(487, 184);
+            this.topsQuanUpDown.Location = new System.Drawing.Point(785, 28);
             this.topsQuanUpDown.Minimum = new decimal(new int[] {
             1,
             0,
@@ -163,7 +134,7 @@
             // 
             // startCalcButton
             // 
-            this.startCalcButton.Location = new System.Drawing.Point(618, 225);
+            this.startCalcButton.Location = new System.Drawing.Point(916, 69);
             this.startCalcButton.Name = "startCalcButton";
             this.startCalcButton.Size = new System.Drawing.Size(103, 23);
             this.startCalcButton.TabIndex = 12;
@@ -175,11 +146,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 506);
+            this.ClientSize = new System.Drawing.Size(1031, 664);
             this.Controls.Add(this.newValuesButton);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.edgesQuanUpDown);
             this.Controls.Add(this.topsQuanUpDown);
             this.Controls.Add(this.startCalcButton);
             this.Controls.Add(this.label3);
@@ -192,7 +161,6 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.relationsMatrixView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentMatrixView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edgesQuanUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topsQuanUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -208,9 +176,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button newValuesButton;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown edgesQuanUpDown;
         private System.Windows.Forms.NumericUpDown topsQuanUpDown;
         private System.Windows.Forms.Button startCalcButton;
     }
